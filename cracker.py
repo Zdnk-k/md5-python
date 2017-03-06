@@ -1,13 +1,17 @@
 import hashlib
 import os
-import sys
-import time
 import string
+
+"""
+md5 hash cracker. Takes your hash and a dictionary.
+Hashes the words from dictionary and compares.
+"""
 
 
 def is_hex(hsh):
     """check if hex number"""
     return all(c in string.hexdigits for c in hsh)
+
 
 def get_input_hash():
     """retrieves hash from input"""
@@ -37,7 +41,6 @@ def get_dictionary():
     return path.rstrip()
 
 
-
 def check_correct_file(path):
     """checks if there is a file in given path"""
     try:
@@ -48,13 +51,11 @@ def check_correct_file(path):
         if not path.endswith('.txt'):
             print('Bad file type')
             return False
-        # TODO: DOESNT WORK RIGHT!!!
         print('File opened succesfully.')
         return True
     except IOError as e:
         errno, strerror = e.args
         print('I/O error({0}): {1}'.format(errno, strerror))
-        # print(e)
         return False
 
 
@@ -107,8 +108,8 @@ def wanna_end():
             answer = input("Do you wish to try again? (Yes/No) ")
 
 
-
 def cracker():
+    """runs all the stuff"""
     end = False
     print('WELCOME!!!')
     while not end:
@@ -116,17 +117,10 @@ def cracker():
         inputHash = get_input_hash()
         # get path to dictionary (dictionary name)
         path = get_dictionary()
-
+        # reads the file and comapres created hashes
         read_n_compare(path, inputHash)
+        # ask whether to end/try again
         end = wanna_end()
-    print('Exiting.')
-    time.sleep(3)
-    sys.exit()
-
+    exit()
 
 cracker()
-# TODO: replace latters
-# TODO: variations
-# TODO: check corect file, does it exist
-# TODO: yes no lambda
-# TODO: TRY
