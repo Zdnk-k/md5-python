@@ -80,7 +80,7 @@ def read_n_compare(filename, inputHash):
         for line in f:
             line = line.encode('utf-8').rstrip()
             if compare_hashes(inputHash, hash_word(line)):
-                print("Found it! Password: {}".format(line.decode('utf-8')))
+                print("\nFOUND IT! Password: {}\n".format(line.decode('utf-8')))
                 return True
         print('\nNO MATCH FOUND\n')
         return False
@@ -97,14 +97,14 @@ def read_n_compare(filename, inputHash):
 
 def wanna_end():
     """ask user whether to end/continue"""
-    answer = input("Do you wish to try again? (Yes/No)")
+    answer = input("Do you wish to try again? (Yes/No) ")
     while True:
         if answer in ('Yes', 'yes', 'y', 'YES', 'yep', 'yarp', 'aye'):
             return False
         elif answer in ('No', 'no', 'n', 'nope', 'NO', 'nay'):
             return True
         else:
-            print("The ability to type propely is certainly a nice thing to have, ain\'t it?")
+            print("The ability to type propely is certainly a nice thing to have, ain't it?")
             answer = input("Do you wish to try again? (Yes/No) ")
 
 
